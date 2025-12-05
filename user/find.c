@@ -67,8 +67,8 @@ void search_and_print(char *path, char *filename) {
       // Recurse into directory
       search_and_print(buf, filename);
     } else if (entry_st.type == T_FILE) {
-      // Check if filename matches
-      if (strcmp(de.name, filename) == 0) {
+      // Check if filename matches (with regex support)
+      if (match(filename, de.name)) {
         if (!exec_flag)
           printf("%s\n", buf);
         else {
