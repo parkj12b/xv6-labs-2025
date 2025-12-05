@@ -2,11 +2,10 @@
 #include "user/user.h"
 
 int main(int argc, char *argv[]) {
-  char *argv_exec[] = {"echo", "hi","wc", 0};
-  int fd = fork();
-  if (fd == 0) {
-    exec("echo", argv_exec);
+  if (match("a*", "hello")) {
+    printf("Matched!\n");
+  } else {
+    printf("Did not match.\n");
   }
-  wait(0);
   return 0;
 }

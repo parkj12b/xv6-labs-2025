@@ -73,16 +73,18 @@ void search_and_print(char *path, char *filename) {
           printf("%s\n", buf);
         else {
           if (fork() == 0) {
-			int fd = open(buf, O_RDONLY);
-			if (fd < 0) {
-				fprintf(2, "find: cannot open %s\n", buf);
-				exit(1);
-			}
-			close(0); // close stdin
-			dup(fd);  // duplicate fd to stdin
-			close(fd);
+            // Redirect file to stdin
+            int fd = open(buf, O_RDONLY);
+            if (fd < 0) {
+              fprintf(2, "find: cannot open %s\n", buf);
+              exit(1);
+            }
+            close(0); // close stdin
+            dup(fd);  // duplicate fd to stdin
+            close(fd);
             exec(exec_cmd, exec_args);
-            exit(0);
+            fprintf(2, "find: exec failed\n");
+            exit(1);
           } else {
             wait(0);
           }
@@ -106,8 +108,8 @@ int main(int argc, char *argv[]) {
     exit(1);
   }
   if (argc > MAXARG) {
-	fprintf(2, "find: too many arguments\n");
-	exit(1);
+    fprintf(2, "find: too many arguments\n");
+    exit(1);
   }
 
   char *path = argv[1];
@@ -121,7 +123,9 @@ int main(int argc, char *argv[]) {
       exec_args[i - 4] = argv[i];
     }
     exec_args[argc - 4] = 0; // Null-terminate the args array
-    last_arg_index = argc - 4;
+    last_arg_index =
+        argc -
+        4; // This is the number of elements in exec_args (including command)
   }
 
   search_and_print(path, filename);

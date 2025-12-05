@@ -201,9 +201,6 @@ UPROGS=\
 	$U/_test\
 	$U/_uptime\
 
-
-
-
 ifeq ($(LAB),syscall)
 UPROGS += \
 	$U/_attack\

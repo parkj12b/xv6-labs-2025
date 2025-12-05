@@ -44,6 +44,8 @@ int memcmp(const void *, const void *, uint);
 void *memcpy(void *, const void *, uint);
 char *sbrk(int);
 char *sbrklazy(int);
+int match(char *re, char *text);
+int isatty(int fd);
 
 // printf.c
 void fprintf(int, const char *, ...) __attribute__((format(printf, 2, 3)));
@@ -53,6 +55,3 @@ void printf(const char *, ...) __attribute__((format(printf, 1, 2)));
 void *malloc(uint);
 void free(void *);
 #endif // _USER_USER_H_
-
-// grep.c
-int match(char *re, char *text);
