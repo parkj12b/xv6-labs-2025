@@ -199,6 +199,7 @@ UPROGS=\
 	$U/_sixfive\
 	$U/_find\
 	$U/_test\
+	$U/_uptime\
 
 
 
