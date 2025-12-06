@@ -196,21 +196,13 @@ UPROGS=\
 	$U/_forphan\
 	$U/_dorphan\
 	$U/_sandbox\
-
-
-ifeq ($(LAB),util)
-UPROGS += \
 	$U/_sleep\
 	$U/_sixfive\
 	$U/_find\
 	$U/_test\
 	$U/_uptime\
-
-ifeq ($(LAB),syscall)
-UPROGS += \
 	$U/_attack\
 	$U/_secret
-endif
 
 ifeq ($(LAB),lock)
 UPROGS += \
