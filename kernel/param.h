@@ -1,8 +1,7 @@
-#ifdef LAB_FS
-#define NPROC        10  // maximum number of processes
-#else
-#define NPROC        64  // maximum number of processes (speedsup bigfile)
-#endif
+#ifndef _KERNEL_PARAM_H_
+#define _KERNEL_PARAM_H_
+
+#define NPROC        64  // maximum number of processes
 #define NCPU          8  // maximum number of CPUs
 #define NOFILE       16  // open files per process
 #define NFILE       100  // open files per system
@@ -31,3 +30,4 @@
 #endif
 
 
+#endif

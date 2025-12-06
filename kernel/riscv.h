@@ -2,7 +2,7 @@
 #define _KERNEL_RISCV_H_
 #ifndef __ASSEMBLER__
 
-#include "kernel/types.h"
+#include "types.h"
 
 // which hart (core) is this?
 static inline uint64 r_mhartid() {
