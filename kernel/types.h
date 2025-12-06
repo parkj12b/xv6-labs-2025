@@ -12,4 +12,4 @@ typedef unsigned long uint64;
 
 typedef uint64 pde_t;
 
-#endif // _KERNEL_TYPES_H_
+#endif

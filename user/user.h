@@ -55,3 +55,5 @@ void printf(const char *, ...) __attribute__((format(printf, 1, 2)));
 void *malloc(uint);
 void free(void *);
 #endif // _USER_USER_H_
+
+int interpose(int mask, const char *path);

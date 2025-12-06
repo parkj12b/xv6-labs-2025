@@ -195,6 +195,11 @@ UPROGS=\
 	$U/_logstress\
 	$U/_forphan\
 	$U/_dorphan\
+	$U/_sandbox\
+
+
+ifeq ($(LAB),util)
+UPROGS += \
 	$U/_sleep\
 	$U/_sixfive\
 	$U/_find\
