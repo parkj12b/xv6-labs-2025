@@ -1,0 +1,31 @@
+Looking at the backtrace output, which function called syscall?
+
+usertrap()
+
+What is the value of p->trapframe->a7 and what does that value represent? (Hint: look at user/init.c, the first user program xv6 starts, and its compiled assembly user/init.asm.)
+
+The value of p->trapframe->a7 is 15 and it's the value of user register a7 at the time of trap. a7 register is used to pass the syscall number before calling the syscall.
+Syscall 15 is sys_open. The OS is in the middle of processing the open syscall.
+
+What was the previous mode that the CPU was in?
+Since the syscall had been called which means borrowing kernel previllege from user mode, previously the CPU was in user mode.
+
+Write down the assembly instruction the kernel is panicing at. Which register corresponds to the variable num?
+sepc=0x80001cf8
+*** code ***
+// num = p->trapframe->a7;
+  num = * (int *) 0;
+    80001cf8:	00002683          	lw	a3,0(zero) # 0 <_entry-0x80000000>
+*** code ***
+above assembly is loading a word (32-bit), at address 0 to a3.
+In x86 assembly it would be equivalent to mov a3, [0].
+A3 register is the corresponding register to the variable num in this case. Notice how the compiler optimized to use the register instead of stack even when num is a local variable that belongs to the stack.
+
+Why does the kernel crash? Hint: look at figure 3-3 in the text; is address 0 mapped in the kernel address space? Is that confirmed by the value in scause above? (See description of scause in RISC-V privileged instructions)
+pretty much answered above. low addresses are not used.
+
+What is the name of the process that was running when the kernel paniced? What is its process id (pid)?
+pid 1. init process
+
+
+
