@@ -1,7 +1,7 @@
 #ifndef _KERNEL_FS_H_
 #define _KERNEL_FS_H_
 
-#include "kernel/types.h"
+#include "types.h"
 
 // On-disk file system format.
 // Both the kernel and user programs use this header file.

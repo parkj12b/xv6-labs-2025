@@ -1,7 +1,9 @@
 #ifndef _KERNEL_DEFS_H_
 #define _KERNEL_DEFS_H_
 
-# include "kernel/types.h"
+#include "buf.h"
+#include "types.h"
+#include "riscv.h"
 
 struct buf;
 struct context;
@@ -188,4 +190,4 @@ void            virtio_disk_intr(void);
 
 // number of elements in fixed-size array
 #define NELEM(x) (sizeof(x)/sizeof((x)[0]))
-#endif
+#endif // _KERNEL_DEFS_H_

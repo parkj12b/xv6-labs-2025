@@ -1,6 +1,13 @@
+#ifndef _KERNEL_BUF_H_
+#define _KERNEL_BUF_H_
+
+#include "sleeplock.h"
+#include "types.h"
+#include "fs.h"
+
 struct buf {
-  int valid;   // has data been read from disk?
-  int disk;    // does disk "own" buf?
+  int valid; // has data been read from disk?
+  int disk;  // does disk "own" buf?
   uint dev;
   uint blockno;
   struct sleeplock lock;
@@ -10,3 +17,4 @@ struct buf {
   uchar data[BSIZE];
 };
 
+#endif // _KERNEL_BUF_H_

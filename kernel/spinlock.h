@@ -1,3 +1,6 @@
+#ifndef _KERNEL_SPINLOCK_H_
+#define _KERNEL_SPINLOCK_H_
+
 // Mutual exclusion lock.
 struct spinlock {
   uint locked;       // Is the lock held?
@@ -7,3 +10,4 @@ struct spinlock {
   struct cpu *cpu;   // The cpu holding the lock.
 };
 
+#endif // _KERNEL_SPINLOCK_H_
